@@ -1,0 +1,30 @@
+# Fuel tracker — generic Docker Compose file.
+# Machine-specific tweaks (reverse-proxy network, integrations) go to compose.override.yml,
+# which Docker Compose merges automatically and git ignores.
+services:
+  fuel:
+    build: .
+    image: fuel:local
+    container_name: fuel
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ:-UTC}
+    # optional settings and integration tokens, see .env.example
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      # named volume: keep SQLite on a native filesystem, not on a network/virtiofs mount
+      - data:/data
+    ports:
+      # localhost only; put HTTPS (Caddy, Traefik, nginx, Cloudflare Tunnel…) in front of it
+      - "127.0.0.1:${FUEL_PORT:-3050}:8080"
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 192m
+    pids_limit: 100
+
+volumes:
+  data:

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title data-t>Вхід · Бак</title>
+<meta name="theme-color" content="#EEF1F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101614" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials">
+<link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<style>
+@font-face{font-family:'Onest';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/onest-cyrillic-400-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Onest';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/onest-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+20B4,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Onest';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/onest-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Onest';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/onest-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+20B4,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{
+  --bg:#EEF1F0; --surface:#FFFFFF; --surface2:#F4F7F6; --ink:#14201C; --muted:#56645F; --line:#D7DEDB;
+  --accent:#0E6B57; --accent-ink:#FFFFFF; --accent-soft:#DCEEE8; --danger:#B4363F;
+  --shadow:0 10px 30px rgba(20,32,28,.16);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101614; --surface:#18211E; --surface2:#1F2A26; --ink:#E4ECE9; --muted:#98A8A2; --line:#2A3732;
+    --accent:#5CC9AE; --accent-ink:#0B1A15; --accent-soft:#1E3A32; --danger:#EE8790;
+    --shadow:0 8px 30px rgba(0,0,0,.5);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101614; --surface:#18211E; --surface2:#1F2A26; --ink:#E4ECE9; --muted:#98A8A2; --line:#2A3732;
+  --accent:#5CC9AE; --accent-ink:#0B1A15; --accent-soft:#1E3A32; --danger:#EE8790;
+  --shadow:0 8px 30px rgba(0,0,0,.5);
+  color-scheme: dark;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 'Onest',system-ui,-apple-system,'Segoe UI',sans-serif;-webkit-text-size-adjust:100%}
+main{max-width:400px;margin:0 auto;padding:max(12vh,48px) 16px 40px}
+.logo{width:56px;height:56px;border-radius:14px;display:block;margin-bottom:18px}
+h1{font-size:28px;line-height:1.15;letter-spacing:-.02em;margin:0 0 6px}
+p{margin:0 0 22px;color:var(--muted)}
+label{display:block;font-size:13px;color:var(--muted);margin:14px 0 5px}
+input{width:100%;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:11px 12px;font:inherit;min-height:48px}
+input:focus{outline:2px solid var(--accent);outline-offset:1px}
+button{width:100%;margin-top:22px;border:0;border-radius:12px;padding:14px 16px;font:600 16px 'Onest',system-ui,sans-serif;background:var(--accent);color:var(--accent-ink);cursor:pointer}
+button:disabled{opacity:.6}
+.err{min-height:22px;margin-top:12px;color:var(--danger);font-size:14px}
+.foot{margin-top:28px;font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+  <img class="logo" src="/icons/icon.svg" alt="">
+  <h1 data-t>Бак</h1>
+  <p data-t>Облік пального й витрат на авто.</p>
+  <form id="f" autocomplete="on">
+    <label data-t for="login">Логін</label>
+    <input id="login" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+    <label data-t for="password">Пароль</label>
+    <input id="password" name="password" type="password" autocomplete="current-password" required>
+    <button data-t id="go" type="submit">Увійти</button>
+    <div class="err" id="err" role="alert"></div>
+  </form>
+  <div class="foot" data-t>Логін і пароль видає той, хто встановив Бак.</div>
+</main>
+<script src="/i18n.js"></script>
+<script src="/login.js"></script>
+</body>
+</html>

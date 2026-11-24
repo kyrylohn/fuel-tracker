@@ -1,0 +1,10 @@
+.env
+data/
+*.bak*
+node_modules/
+compose.override.yml
+!.env.example
+ha-package-fuel.yaml
+
+# real device exports (personal data), tests skip without them
+test/fixtures/*.xls

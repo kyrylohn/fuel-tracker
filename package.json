@@ -1,0 +1,13 @@
+{
+  "name": "fuel",
+  "version": "1.15.0",
+  "private": true,
+  "description": "Бак: облік пального й витрат на авто (Node + SQLite, без залежностей)",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning server/server.js",
+    "test": "node --disable-warning=ExperimentalWarning --test test/*.test.js"
+  },
+  "engines": { "node": ">=22.13" },
+  "license": "UNLICENSED"
+}
